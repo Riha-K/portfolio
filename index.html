@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riha Sanjay Kokode — AI Engineer</title>
+<meta name="description" content="M.Tech AI, IIT Patna. Applied ML, computer vision, RAG systems, and systems engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Sora:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #07110e;
+  --bg2: #0c1a15;
+  --ink: #e8f2ec;
+  --muted: #8aa396;
+  --line: #1c3229;
+  --accent: #3dd68c;
+  --accent-dim: rgba(61, 214, 140, 0.14);
+  --warm: #e8c07a;
+  --danger: #ff7a6e;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Sora', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 14px 28px;
+  background: rgba(7, 17, 14, 0.86);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-brand {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900; font-size: 1.15rem; letter-spacing: -0.02em;
+  text-decoration: none; color: var(--ink);
+}
+.nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+.nav-links a {
+  text-decoration: none; color: var(--muted);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase; padding: 8px 10px;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-cta {
+  text-decoration: none; background: var(--accent); color: #04110b;
+  font-weight: 700; font-size: 12px; letter-spacing: 0.03em;
+  padding: 10px 14px; border-radius: 999px;
+}
+.nav-cta:hover { filter: brightness(1.08); }
+
+.hero {
+  position: relative; min-height: calc(100vh - 58px);
+  display: grid; align-items: end;
+  padding: 48px 28px 56px;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 55% at 78% 18%, rgba(61, 214, 140, 0.18), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 12% 80%, rgba(232, 192, 122, 0.08), transparent 55%),
+    linear-gradient(160deg, #07110e 0%, #0b1813 45%, #0a1418 100%);
+}
+.hero-grid {
+  position: absolute; inset: 0; opacity: 0.22; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(232, 242, 236, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 242, 236, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, #000 20%, transparent 95%);
+  animation: drift 28s linear infinite;
+}
+@keyframes drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(48px); }
+}
+.hero-orb {
+  position: absolute; width: 420px; height: 420px; border-radius: 50%;
+  right: -60px; top: 8%;
+  background: radial-gradient(circle, rgba(61, 214, 140, 0.22), transparent 68%);
+  filter: blur(8px);
+  animation: pulse 7s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: 1100px; width: 100%; margin: 0 auto;
+}
+.hero-kicker {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; color: var(--accent); letter-spacing: 0.14em;
+  text-transform: uppercase; margin-bottom: 18px;
+  opacity: 0; animation: rise 0.8s ease forwards 0.1s;
+}
+.hero-name {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900; font-size: clamp(3.2rem, 11vw, 7.2rem);
+  line-height: 0.92; letter-spacing: -0.04em;
+  color: var(--ink); margin-bottom: 18px;
+  opacity: 0; animation: rise 0.9s ease forwards 0.2s;
+}
+.hero-name em {
+  font-style: normal; color: transparent;
+  background: linear-gradient(120deg, var(--accent), #9bf0c2 45%, var(--warm));
+  -webkit-background-clip: text; background-clip: text;
+}
+.hero-line {
+  max-width: 520px; color: var(--muted); font-size: 1.05rem;
+  margin-bottom: 28px;
+  opacity: 0; animation: rise 0.9s ease forwards 0.35s;
+}
+.hero-actions {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  opacity: 0; animation: rise 0.9s ease forwards 0.5s;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  text-decoration: none; border-radius: 999px;
+  padding: 12px 18px; font-weight: 700; font-size: 13px;
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--accent); color: #04110b; }
+.btn-ghost {
+  border: 1px solid var(--line); color: var(--ink);
+  background: rgba(255,255,255,0.02);
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 28px 90px; }
+.section { padding-top: 72px; }
+.sec-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 10px;
+}
+.sec-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700;
+  letter-spacing: -0.03em; margin-bottom: 12px;
+}
+.sec-lead { color: var(--muted); max-width: 640px; margin-bottom: 28px; }
+
+.about-grid {
+  display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 28px;
+}
+@media (max-width: 800px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+.about-copy p + p { margin-top: 12px; color: #b7c9be; }
+.facts {
+  border-left: 1px solid var(--line); padding-left: 22px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.fact .k {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; color: var(--muted); letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.fact .v { font-weight: 600; margin-top: 2px; }
+
+.project {
+  display: grid; grid-template-columns: 140px 1fr auto;
+  gap: 18px; align-items: start;
+  padding: 26px 0; border-top: 1px solid var(--line);
+  transition: background 0.2s ease;
+}
+.project:last-child { border-bottom: 1px solid var(--line); }
+.project:hover { background: linear-gradient(90deg, transparent, rgba(61,214,140,0.04), transparent); }
+@media (max-width: 720px) {
+  .project { grid-template-columns: 1fr; gap: 8px; }
+}
+.p-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; color: var(--warm); letter-spacing: 0.06em;
+  text-transform: uppercase; padding-top: 6px;
+}
+.p-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.45rem; font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.p-desc { color: var(--muted); max-width: 640px; margin-bottom: 12px; }
+.p-stack {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.chip {
+  font-size: 11px; font-weight: 600; color: #c5ddd0;
+  background: var(--accent-dim); border: 1px solid #244636;
+  padding: 4px 10px; border-radius: 999px;
+}
+.p-links { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+@media (max-width: 720px) { .p-links { align-items: flex-start; flex-direction: row; } }
+.p-links a {
+  text-decoration: none; color: var(--accent); font-weight: 600; font-size: 13px;
+}
+.p-links a:hover { text-decoration: underline; }
+
+.skills {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+}
+@media (max-width: 800px) { .skills { grid-template-columns: 1fr; } }
+.skill-block {
+  padding: 8px 0 4px;
+  border-top: 1px solid var(--line);
+}
+.skill-block h3 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.15rem; margin: 14px 0 10px;
+}
+.skill-block ul { list-style: none; color: var(--muted); }
+.skill-block li { padding: 3px 0 3px 14px; position: relative; }
+.skill-block li::before {
+  content: ''; position: absolute; left: 0; top: 0.72em;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+}
+
+.contact {
+  margin-top: 20px; padding: 36px 0 8px;
+  border-top: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+  justify-content: space-between;
+}
+.contact p { color: var(--muted); max-width: 420px; }
+.contact-links { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 22px 28px 40px; color: var(--muted); font-size: 12px;
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  max-width: 1100px; margin: 0 auto;
+}
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="nav-brand" href="#top">Riha</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cta" href="mailto:YOUR_EMAIL@example.com">Email me</a>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-inner">
+      <p class="hero-kicker">M.Tech Artificial Intelligence · IIT Patna</p>
+      <h1 class="hero-name">Riha<br><em>Kokode</em></h1>
+      <p class="hero-line">I build applied AI systems — RAG products, computer vision pipelines, and production-minded ML — with the systems discipline of an engineer.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#work">See selected work</a>
+        <a class="btn btn-ghost" href="https://github.com/Riha-K" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="section" id="about">
+      <p class="sec-label">01 — About</p>
+      <h2 class="sec-title">AI that ships, not just slides.</h2>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>I’m an M.Tech AI student at <strong>IIT Patna</strong> (CGPA 8.32) with a B.Tech in Computer Science from <strong>NIT Delhi</strong>. I care about models that survive contact with messy data, retrieval that can be audited, and code you can defend in an interview because you built the path end-to-end.</p>
+          <p>Lead work: OptiSAR multi-sensor segmentation, PolicyPilot RAG, and UEHR clinical forms — then agents (ClaimGuard), conversational clinical scoring (depression detection), and C++ systems (MatchBook, ShelfLock) when latency and correctness matter.</p>
+        </div>
+        <div class="facts">
+          <div class="fact"><div class="k">Focus</div><div class="v">Applied AI / ML · RAG · CV</div></div>
+          <div class="fact"><div class="k">Education</div><div class="v">M.Tech AI, IIT Patna</div></div>
+          <div class="fact"><div class="k">Undergrad</div><div class="v">B.Tech CSE, NIT Delhi</div></div>
+          <div class="fact"><div class="k">Open to</div><div class="v">SDE · AI/ML · Research intern / FTE</div></div>
+          <div class="fact"><div class="k">Location</div><div class="v">India · remote-friendly</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <p class="sec-label">02 — Selected work</p>
+      <h2 class="sec-title">Projects I can walk through line by line.</h2>
+      <p class="sec-lead">Featured for interviews: grounding, retrieval, vision metrics, and systems latency — not toy demos.</p>
+
+      <article class="project">
+        <div class="p-tag">01 · CV · Research</div>
+        <div>
+          <h3 class="p-title">OptiSAR</h3>
+          <p class="p-desc">Multi-sensor land-cover segmentation on MultiSenGE. Stacks Sentinel-2 (10 optical) + Sentinel-1 (VV/VH) across 4 dates into a U-TAE (shared spatial encoder, temporal attention, U-Net decoder). Tile-held-out eval on 31UEQ: weighted F1 0.9387, kappa 0.5757 — above ConvLSTM baseline. Staged train: freeze encoder, then full fine-tune.</p>
+          <div class="p-stack">
+            <span class="chip">PyTorch</span><span class="chip">U-TAE</span><span class="chip">SAR + Optical</span><span class="chip">Segmentation</span>
+          </div>
+        </div>
+        <div class="p-links">
+          <a href="https://github.com/Riha-K/OptiSAR" target="_blank" rel="noopener">Repo →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="p-tag">02 · RAG · GenAI</div>
+        <div>
+          <h3 class="p-title">PolicyPilot</h3>
+          <p class="p-desc">Local RAG assistant for CX policies. Chunk → MiniLM embeddings → Chroma cosine retrieval → Ollama grounded answers with citations. Refuses when the KB has no answer; cache invalidates with kb_version.</p>
+          <div class="p-stack">
+            <span class="chip">Python</span><span class="chip">ChromaDB</span><span class="chip">MiniLM</span><span class="chip">Ollama</span><span class="chip">Streamlit</span>
+          </div>
+        </div>
+        <div class="p-links">
+          <a href="https://github.com/Riha-K/PolicyPilot" target="_blank" rel="noopener">Repo →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="p-tag">03 · HealthTech</div>
+        <div>
+          <h3 class="p-title">UEHR</h3>
+          <p class="p-desc">Clinical form builder for EHR workflows. Multilingual forms, MongoDB storage, SNOMED CT binding via Snowstorm, openEHR archetypes, React UI + Express API for submissions.</p>
+          <div class="p-stack">
+            <span class="chip">React</span><span class="chip">Node</span><span class="chip">MongoDB</span><span class="chip">SNOMED</span><span class="chip">openEHR</span>
+          </div>
+        </div>
+        <div class="p-links">
+          <a href="https://github.com/Riha-K/UEHR" target="_blank" rel="noopener">Repo →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="p-tag">04 · Agents</div>
+        <div>
+          <h3 class="p-title">ClaimGuard</h3>
+          <p class="p-desc">Multi-step insurance claim triage agent: policy RAG, fraud heuristics, document checklist, grounded recommendation, and a full tool trace for auditability.</p>
+          <div class="p-stack">
+            <span class="chip">Python</span><span class="chip">Agent graph</span><span class="chip">Chroma</span><span class="chip">Ollama</span>
+          </div>
+        </div>
+        <div class="p-links">
+          <a href="https://github.com/Riha-K/Claim-Guard" target="_blank" rel="noopener">Repo →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="p-tag">05 · NLP · Health</div>
+        <div>
+          <h3 class="p-title">Contextualized Depression Detection</h3>
+          <p class="p-desc">CLEF eRisk-style conversational detector. Keyword + MiniLM embedding + negation filters estimate BDI-II (0–63) with SmolLM2 / Llama+LoRA personas — without asking about depression directly.</p>
+          <div class="p-stack">
+            <span class="chip">Python</span><span class="chip">Transformers</span><span class="chip">SmolLM2</span><span class="chip">LoRA</span>
+          </div>
+        </div>
+        <div class="p-links">
+          <a href="https://github.com/Riha-K/CONTEXTUALIZED-DEPRESSION-DETECTION-SYSTEM" target="_blank" rel="noopener">Repo →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="p-tag">06 · Systems · C++</div>
+        <div>
+          <h3 class="p-title">MatchBook</h3>
+          <p class="p-desc">C++17 limit-order matching engine with price-time priority, CSV tick replay, and chrono latency measurement. Bids/asks in map+deque; single-threaded matching path.</p>
+          <div class="p-stack">
+            <span class="chip">C++17</span><span class="chip">STL</span><span class="chip">CMake</span><span class="chip">Latency</span>
+          </div>
+        </div>
+        <div class="p-links">
+          <a href="https://github.com/Riha-K/MatchBook" target="_blank" rel="noopener">Repo →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="p-tag">07 · Systems · DB</div>
+        <div>
+          <h3 class="p-title">ShelfLock</h3>
+          <p class="p-desc">Concurrent C++ / PostgreSQL inventory with stock holds, expiry worker, and checkout — FOR UPDATE transactions and timed release of unpaid holds.</p>
+          <div class="p-stack">
+            <span class="chip">C++17</span><span class="chip">PostgreSQL</span><span class="chip">libpq</span>
+          </div>
+        </div>
+        <div class="p-links">
+          <a href="https://github.com/Riha-K/ShelfLock" target="_blank" rel="noopener">Repo →</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="section" id="skills">
+      <p class="sec-label">03 — Skills</p>
+      <h2 class="sec-title">What I use day to day.</h2>
+      <div class="skills">
+        <div class="skill-block">
+          <h3>AI / ML</h3>
+          <ul>
+            <li>PyTorch, Transformers, LoRA</li>
+            <li>RAG, embeddings, vector DBs</li>
+            <li>CNNs, segmentation, evaluation metrics</li>
+            <li>Prompting, grounded generation, agents</li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <h3>Software</h3>
+          <ul>
+            <li>Python, C++17, SQL</li>
+            <li>Streamlit, Node, React (course / UEHR)</li>
+            <li>PostgreSQL, ChromaDB, DuckDB</li>
+            <li>Git, CMake, REST APIs</li>
+          </ul>
+        </div>
+        <div class="skill-block">
+          <h3>Interview muscle</h3>
+          <ul>
+            <li>DSA in C++</li>
+            <li>Project deep-dives (pipelines, failure modes)</li>
+            <li>Precision / recall / F1 tradeoffs</li>
+            <li>End-to-end system explanation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <p class="sec-label">04 — Contact</p>
+      <h2 class="sec-title">Let’s talk roles.</h2>
+      <div class="contact">
+        <p>Open to AI/ML engineer, SDE, and research intern / new-grad roles in India or remote. Prefer teams where I can own a pipeline from data to deploy.</p>
+        <div class="contact-links">
+          <a class="btn btn-primary" href="mailto:YOUR_EMAIL@example.com">Email</a>
+          <a class="btn btn-ghost" href="https://github.com/Riha-K" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Riha Sanjay Kokode</span>
+    <span>Built for interviews · update email & LinkedIn placeholders before sharing</span>
+  </footer>
+</body>
+</html>
